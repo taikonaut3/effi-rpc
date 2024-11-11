@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.taikonaut3</groupId>
+        <artifactId>effi-rpc-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>./effi-rpc-maven/effi-rpc-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>effi-rpc</artifactId>
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>A high-performance and high-scalable RPC framework based on Netty.</description>
+    <url>https://github.com/taikonaut3/effi-rpc/tree/master</url>
+
+    <modules>
+        <module>effi-rpc-common</module>
+        <module>effi-rpc-core</module>
+        <module>effi-rpc-demo</module>
+        <module>effi-rpc-protocol</module>
+        <module>effi-rpc-proxy</module>
+        <module>effi-rpc-eventhub</module>
+        <module>effi-rpc-governance</module>
+        <module>effi-rpc-registry</module>
+        <module>effi-rpc-serialization</module>
+        <module>effi-rpc-transport</module>
+        <module>effi-rpc-spring</module>
+        <module>effi-rpc-test</module>
+        <module>effi-rpc-maven</module>
+        <module>effi-rpc-metrics</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.taikonaut3</groupId>
+                <artifactId>effi-rpc-dependencies-bom</artifactId>
+                <version>${revision}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>oss</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <phase>clean</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.taikonaut3</groupId>
+        <artifactId>effi-rpc-proxy</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>effi-rpc-proxy-cglib</artifactId>
+    <description>Proxy implemented with cglib.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-proxy-api</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

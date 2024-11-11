@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.taikonaut3</groupId>
+        <artifactId>effi-rpc-transport</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>effi-rpc-transport-api</artifactId>
+    <description>Transport layer adaptation for different protocol.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-serialization-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-metrics</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.lz4/lz4-java -->
+        <dependency>
+            <groupId>org.lz4</groupId>
+            <artifactId>lz4-java</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java -->
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

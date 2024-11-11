@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.taikonaut3</groupId>
+        <artifactId>effi-rpc</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>effi-rpc-demo</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>provider</module>
+        <module>consumer</module>
+        <module>common-model</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-serialization-msgpack</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-registry-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-proxy-cglib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-proxy-bytebuddy</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot3 -->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
+
+        <!--         <dependency> -->
+        <!--             <groupId>io.github.taikonaut3naut3</groupId> -->
+        <!--             <artifactId>effi-protocol-spring-web-api</artifactId> -->
+        <!--             <version>${revision}</version> -->
+        <!--         </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>3.0.0.Beta3</version>
+        </dependency>
+    </dependencies>
+
+</project>

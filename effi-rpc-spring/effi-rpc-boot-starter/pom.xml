@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.taikonaut3</groupId>
+        <artifactId>effi-rpc-spring</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>effi-rpc-boot-starter</artifactId>
+    <description>Integration with spring boot.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-protocol-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-transport-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-proxy-jdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-registry-consul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-serialization-kryo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-serialization-msgpack</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.taikonaut3</groupId>
+            <artifactId>effi-rpc-eventhub-disruptor</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
