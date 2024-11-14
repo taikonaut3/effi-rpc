@@ -6,7 +6,6 @@ import io.effi.rpc.common.extension.Attributes;
 import io.effi.rpc.common.extension.Scheduler;
 import io.effi.rpc.common.url.URLSource;
 import io.effi.rpc.common.util.CollectionUtil;
-import io.effi.rpc.core.caller.Caller;
 import io.effi.rpc.core.config.RegistryConfig;
 import io.effi.rpc.core.filter.Filter;
 import io.effi.rpc.core.manager.*;

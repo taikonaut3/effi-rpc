@@ -2,7 +2,6 @@ package io.effi.rpc.core;
 
 import io.effi.rpc.common.exception.RpcException;
 import io.effi.rpc.common.url.URL;
-import io.effi.rpc.core.caller.Caller;
 
 import java.lang.reflect.Type;
 import java.util.function.Supplier;
@@ -76,4 +75,11 @@ public interface Invocation<T> extends PortalSource {
      * @return current {@link Invocation} instance with the updated behavior.
      */
     <R> Invocation<R> rebase(Supplier<R> invoke);
+
+    /**
+     * Sets the arguments for the invocation.
+     *
+     * @param args
+     */
+    void args(Object... args);
 }

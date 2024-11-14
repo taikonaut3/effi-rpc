@@ -10,7 +10,8 @@
 7、继承关系的extension
 8、重构URL类
 9、优化所有config转url的地方
-9.registry,client,server 不与portal绑定，每个portal可提供默认的参数配置和自定义的参数配置
-10、服务端传输层异常处理
-11、stream通信,一元rpc时的容错处理
+10、registry,client,server 不与portal绑定，每个portal可提供默认的参数配置和自定义的参数配置
+11、服务端传输层异常处理
+12、stream通信,一元rpc时的容错处理
+13、传输层的客户端修改为池化的客户端
 

@@ -2,7 +2,7 @@ package io.effi.rpc.protocol.http.h1;
 
 import io.effi.rpc.common.extension.TypeToken;
 import io.effi.rpc.common.url.URL;
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.protocol.http.HttpCaller;
 
 /**

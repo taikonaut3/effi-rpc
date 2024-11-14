@@ -85,4 +85,8 @@ public final class NettyChannel extends AbstractChannel {
             logger.warn("Current channel: {} is closed", this);
         }
     }
+
+    public Channel nettyChannel() {
+        return channel;
+    }
 }

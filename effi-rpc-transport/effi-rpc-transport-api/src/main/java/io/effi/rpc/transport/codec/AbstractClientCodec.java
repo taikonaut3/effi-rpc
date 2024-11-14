@@ -2,7 +2,7 @@ package io.effi.rpc.transport.codec;
 
 import io.effi.rpc.common.url.URL;
 import io.effi.rpc.core.ReplyFuture;
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.result.Result;
 import io.effi.rpc.core.support.InvocationSupport;
 import io.effi.rpc.transport.Envelope;

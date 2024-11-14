@@ -7,7 +7,7 @@ import io.effi.rpc.common.url.Parameter;
 import io.effi.rpc.common.url.URL;
 import io.effi.rpc.common.url.URLBuilder;
 import io.effi.rpc.common.url.URLType;
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.Locator;
 import io.effi.rpc.core.Portal;
 import io.effi.rpc.core.config.ClientConfig;

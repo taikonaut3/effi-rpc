@@ -1,6 +1,6 @@
 package io.effi.rpc.core.manager;
 
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.Portal;
 
 /**

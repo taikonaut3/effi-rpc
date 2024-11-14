@@ -4,7 +4,6 @@ import io.effi.rpc.common.exception.ConnectException;
 import io.effi.rpc.common.url.URL;
 import io.effi.rpc.transport.channel.ChannelHandler;
 import io.effi.rpc.transport.netty.client.NettyPoolClient;
-import io.netty.channel.Channel;
 
 /**
  * Http Client.
@@ -16,7 +15,8 @@ public class NettyHttp1Client extends NettyPoolClient {
     }
 
     @Override
-    protected void doSend(Channel channel, Object message) {
-        channel.writeAndFlush(message);
+    public void send(Object message) {
+        channel().send(message);
     }
+
 }

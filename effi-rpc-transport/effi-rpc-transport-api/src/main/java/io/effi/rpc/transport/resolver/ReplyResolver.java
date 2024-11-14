@@ -1,6 +1,6 @@
 package io.effi.rpc.transport.resolver;
 
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.result.Result;
 import io.effi.rpc.transport.Envelope;
 

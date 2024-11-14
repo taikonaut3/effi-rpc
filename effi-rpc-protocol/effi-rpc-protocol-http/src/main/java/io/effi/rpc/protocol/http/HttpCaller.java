@@ -1,8 +1,8 @@
 package io.effi.rpc.protocol.http;
 
 import io.effi.rpc.common.url.URL;
-import io.effi.rpc.core.caller.Caller;
-import io.effi.rpc.protocol.support.caller.AbstractUnaryCaller;
+import io.effi.rpc.core.Caller;
+import io.effi.rpc.protocol.support.caller.AbstractCaller;
 import io.effi.rpc.transport.http.HttpMethod;
 import io.effi.rpc.transport.http.HttpVersion;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  */
 @Getter
 @Accessors(fluent = true)
-public abstract class HttpCaller<R> extends AbstractUnaryCaller<R> {
+public abstract class HttpCaller<R> extends AbstractCaller<R> {
 
     protected HttpVersion version;
 

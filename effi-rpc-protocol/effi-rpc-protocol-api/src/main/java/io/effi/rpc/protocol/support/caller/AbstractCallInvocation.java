@@ -5,11 +5,11 @@ import io.effi.rpc.common.url.*;
 import io.effi.rpc.common.util.CollectionUtil;
 import io.effi.rpc.common.util.StringUtil;
 import io.effi.rpc.core.CallInvocation;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.ReplyFuture;
 import io.effi.rpc.core.arg.Argument;
 import io.effi.rpc.core.arg.ParamVar;
 import io.effi.rpc.core.arg.PathVar;
-import io.effi.rpc.core.caller.Caller;
 import io.effi.rpc.core.utils.PortalUtil;
 import io.effi.rpc.protocol.support.AbstractInvocation;
 
@@ -52,6 +52,12 @@ public abstract class AbstractCallInvocation<T> extends AbstractInvocation<T> im
             urlBuilder.paths(queryPath.paths()).params(queryPath.queryParams());
         }
         return urlBuilder.build();
+    }
+
+    @Override
+    public void args(Object... args) {
+        super.args(args);
+        handleCallerArgs();
     }
 
     protected void handleCallerArgs() {

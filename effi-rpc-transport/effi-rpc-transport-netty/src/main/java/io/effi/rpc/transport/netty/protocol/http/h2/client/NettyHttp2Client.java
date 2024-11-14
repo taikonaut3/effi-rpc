@@ -2,8 +2,8 @@ package io.effi.rpc.transport.netty.protocol.http.h2.client;
 
 import io.effi.rpc.common.exception.ConnectException;
 import io.effi.rpc.common.url.URL;
+import io.effi.rpc.transport.channel.Channel;
 import io.effi.rpc.transport.channel.ChannelHandler;
-import io.effi.rpc.transport.netty.NettyChannel;
 import io.effi.rpc.transport.netty.NettySupport;
 import io.effi.rpc.transport.netty.client.NettyClient;
 import io.netty.handler.codec.http2.Http2StreamChannelBootstrap;
@@ -27,8 +27,8 @@ public class NettyHttp2Client extends NettyClient {
     }
 
     @Override
-    public void send(Object message) {
-        NettyChannel nettyChannel = NettySupport.acquireStreamChannel(streamChannelBootstrap, url, connectTimeout);
-        nettyChannel.send(message);
+    public Channel channel() {
+        return NettySupport.acquireStreamChannel(streamChannelBootstrap, url, connectTimeout);
     }
+
 }

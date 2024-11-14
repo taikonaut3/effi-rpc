@@ -19,11 +19,12 @@ public class NettyHttp2PoolClient extends NettyPoolClient {
     }
 
     @Override
-    protected void doSend(Channel channel, Object message) {
-        Http2StreamChannelBootstrap streamChannelBootstrap = channel.attr(NettySupport.H2_STREAM_BOOTSTRAP_KEY).get();
-        NettyChannel nettyChannel = NettySupport.acquireStreamChannel(streamChannelBootstrap, url, connectTimeout);
-        nettyChannel.send(message);
-        release(channel);
+    public io.effi.rpc.transport.channel.Channel channel() {
+        NettyChannel channel = (NettyChannel) super.channel();
+        Channel nettyChannel = channel.nettyChannel();
+        Http2StreamChannelBootstrap streamChannelBootstrap = nettyChannel.attr(NettySupport.H2_STREAM_BOOTSTRAP_KEY).get();
+        return NettySupport.acquireStreamChannel(streamChannelBootstrap, url, connectTimeout);
     }
+
 }
 

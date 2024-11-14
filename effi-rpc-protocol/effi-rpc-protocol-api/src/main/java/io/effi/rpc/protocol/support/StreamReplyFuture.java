@@ -30,4 +30,10 @@ public class StreamReplyFuture extends ReplyFuture {
         streamObserver.onError(t);
     }
 
+
+    @SuppressWarnings("unchecked")
+    public static StreamReplyFuture from(StreamObserver<?> streamObserver){
+        return new StreamReplyFuture((StreamObserver<Object>) streamObserver);
+    }
+
 }

@@ -6,8 +6,9 @@ import io.effi.rpc.common.exception.ConnectException;
 import io.effi.rpc.common.exception.NetWorkException;
 import io.effi.rpc.common.url.URL;
 import io.effi.rpc.transport.channel.ChannelHandler;
-import io.effi.rpc.transport.netty.ProtocolSupport;
 import io.effi.rpc.transport.netty.InitializedConfig;
+import io.effi.rpc.transport.netty.NettyChannel;
+import io.effi.rpc.transport.netty.ProtocolSupport;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.pool.ChannelPoolHandler;
@@ -48,15 +49,12 @@ public class NettyPoolClient extends NettyClient {
     }
 
     @Override
-    public void send(Object message) {
-        // Acquire a channel from the pool and send the message
+    public io.effi.rpc.transport.channel.Channel channel() {
         Future<Channel> future = channelPool.acquire();
         boolean success = future.awaitUninterruptibly(connectTimeout, TimeUnit.MILLISECONDS);
         // Check the outcome of acquiring a channel
         if (success && future.isSuccess()) {
-            Channel ch = future.getNow();
-            // Send the message
-            doSend(ch, message);
+            return acquireChannel(future.getNow());
         } else if (future.cause() != null) {
             throw new ConnectException(future.cause());
         } else {
@@ -64,17 +62,12 @@ public class NettyPoolClient extends NettyClient {
         }
     }
 
-    /**
-     * Sends a message through the specified channel and releases the channel back to the pool.
-     *
-     * @param channel The channel through which to send the message.
-     * @param message The message to be sent.
-     */
-    protected void doSend(Channel channel, Object message) {
-        // Write and flush the message to the channel
-        channel.writeAndFlush(message);
-        // Release the channel back to the pool
-        release(channel);
+    @Override
+    public void send(Object message) {
+        NettyChannel channel = (NettyChannel) channel();
+        Channel nettyChannel = channel.nettyChannel();
+        channel.send(message);
+        release(nettyChannel);
     }
 
     @Override

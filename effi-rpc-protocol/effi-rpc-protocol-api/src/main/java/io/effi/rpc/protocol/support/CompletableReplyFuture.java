@@ -17,8 +17,6 @@ public class CompletableReplyFuture extends ReplyFuture {
 
     private Throwable exception;
 
-    ;
-
     public CompletableReplyFuture() {
         this.completableFuture = new CompletableFuture<>();
     }

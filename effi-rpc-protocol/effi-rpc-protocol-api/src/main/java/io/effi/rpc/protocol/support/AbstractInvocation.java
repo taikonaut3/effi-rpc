@@ -59,4 +59,13 @@ public class AbstractInvocation<T> implements Invocation<T> {
         return (Invocation<R>) this;
     }
 
+    @Override
+    public void args(Object... args) {
+        this.args = args;
+    }
+
+    @Override
+    public Object[] args() {
+        return args;
+    }
 }

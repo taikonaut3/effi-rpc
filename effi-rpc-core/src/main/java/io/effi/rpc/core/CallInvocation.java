@@ -1,7 +1,6 @@
 package io.effi.rpc.core;
 
 import io.effi.rpc.common.url.URL;
-import io.effi.rpc.core.caller.Caller;
 
 /**
  * Provides additional methods specific to the context of a rpc.

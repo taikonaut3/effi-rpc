@@ -8,11 +8,7 @@ import io.effi.rpc.common.extension.collection.LazyList;
 import io.effi.rpc.common.url.URL;
 import io.effi.rpc.common.util.AssertUtil;
 import io.effi.rpc.common.util.CollectionUtil;
-import io.effi.rpc.core.CallInvocation;
-import io.effi.rpc.core.Invocation;
-import io.effi.rpc.core.Locator;
-import io.effi.rpc.core.Portal;
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.*;
 import io.effi.rpc.core.config.ClientConfig;
 import io.effi.rpc.core.filter.ChosenFilter;
 import io.effi.rpc.core.filter.Filter;
@@ -23,7 +19,9 @@ import io.effi.rpc.internal.logging.Logger;
 import io.effi.rpc.internal.logging.LoggerFactory;
 import io.effi.rpc.metrics.CallerMetrics;
 import io.effi.rpc.metrics.MetricsSupport;
+import io.effi.rpc.protocol.RpcSupport;
 import io.effi.rpc.protocol.support.AbstractInvoker;
+import io.effi.rpc.protocol.support.CompletableReplyFuture;
 import io.effi.rpc.protocol.support.builder.CallerBuilder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -31,6 +29,7 @@ import lombok.experimental.Accessors;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -40,7 +39,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Getter
 @Accessors(fluent = true)
-public abstract class AbstractCaller<R> extends AbstractInvoker<R> implements Caller<R> {
+public abstract class AbstractCaller<R> extends AbstractInvoker<CompletableFuture<R>> implements Caller<R> {
 
     protected final Logger logger = LoggerFactory.getLogger(AbstractCaller.class);
 
@@ -79,9 +78,18 @@ public abstract class AbstractCaller<R> extends AbstractInvoker<R> implements Ca
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public R invoke(Object... args) throws RpcException {
-        return null;
+    public CompletableFuture<R> call(Object... args) throws RpcException {
+        CompletableReplyFuture future = new CompletableReplyFuture();
+        CallInvocation<?> invocation = RpcSupport.locateCall(this, future, args);
+        protocol.sendRequest(invocation);
+        return (CompletableFuture<R>) future.completableFuture();
+    }
+
+    @Override
+    public CompletableFuture<R> invoke(Object... args) throws RpcException {
+        return call(args);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package io.effi.rpc.transport.netty;
 
 import io.effi.rpc.common.url.URL;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 
 /**
@@ -23,7 +24,11 @@ public interface NettyChannelObtain {
      * @return the acquired NettyChannel
      */
     default NettyChannel acquireChannel(ChannelHandlerContext ctx) {
-        return NettyChannel.acquire(ctx.channel(), endpointUrl());
+        return acquireChannel(ctx.channel());
+    }
+
+    default NettyChannel acquireChannel(Channel channel) {
+        return NettyChannel.acquire(channel, endpointUrl());
     }
 }
 

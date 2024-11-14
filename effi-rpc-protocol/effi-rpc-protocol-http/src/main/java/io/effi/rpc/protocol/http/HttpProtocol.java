@@ -9,7 +9,7 @@ import io.effi.rpc.core.CallInvocation;
 import io.effi.rpc.core.Callee;
 import io.effi.rpc.core.ReceiveInvocation;
 import io.effi.rpc.core.ReplyFuture;
-import io.effi.rpc.core.caller.Caller;
+import io.effi.rpc.core.Caller;
 import io.effi.rpc.core.result.Result;
 import io.effi.rpc.protocol.http.codec.HttpClientCodec;
 import io.effi.rpc.protocol.http.codec.HttpServerCodec;
